@@ -1,5 +1,27 @@
 
 import {data} from "../SpeakerData";
+
+function Session({title, room}){
+
+    return (
+        <span className="session w-100">
+        {title}  <strong>Room: {room.name}</strong>
+     </span>
+    )
+}
+
+
+function  Sessions({sessions}){
+    return(
+        <div className="sessionBox card h-250">
+        <Session {... sessions[0]} />
+       
+
+    </div>
+    );
+}
+
+
 const IndexPage = () =>{
 
 
@@ -27,15 +49,11 @@ const IndexPage = () =>{
                             </div>
                          </div>
                          <div>
-                            <p>{bio} {company} {twitterHandle} </p>
+                            <p>{bio} {company} {twitterHandle} {favorite} </p>
                             </div>
                     </div>
-               <div className="sessionBox card h-250">
-                   <span className="session w-100">
-                      {sessions[0].title}{" "}  <strong>Room: {sessions[0].room.name}</strong>
-                   </span>
-
-               </div>
+                    <Sessions sessions = {sessions} />
+              
 
            </div>
                     )
